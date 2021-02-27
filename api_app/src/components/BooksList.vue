@@ -1,7 +1,7 @@
 <template>
     <section>
-        <ul>
-            <books-list-item :books="books"></books-list-item>
+        <ul class="books-list">
+            <books-list-item v-for="(book, index) in books" :key="index" :book="book"></books-list-item>
         </ul>
     </section>
 </template>
@@ -20,5 +20,9 @@ export default {
 </script>
 
 <style>
-
+.books-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
 </style>

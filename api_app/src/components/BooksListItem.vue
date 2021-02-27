@@ -1,25 +1,21 @@
 <template>
-    <div class="books-list">
-        <li class="single-book" v-for="(book, index) in books" :key="index" :book="book">
-            <img class=book-image src="https://upload.wikimedia.org/wikipedia/en/9/93/AGameOfThrones.jpg" alt="book.name">
+    <div class="single-book">
+        <li>
+            <img class=book-image :src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" :alt="book.name">
         </li>
     </div>
 </template>
 
 <script>
+import { eventBus } from "@/main.js";
+
 export default {
     name: "books-list-item",
-    props: ['books']
+    props: ['book']
 }
 </script>
 
 <style>
-.books-list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
 .single-book {
     height: 150px;
     width: 100px;
