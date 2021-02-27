@@ -1,7 +1,8 @@
 <template>
     <div class="single-book">
-        <li>
-            <img class=book-image :src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" :alt="book.name">
+        <li v-on:click="handleClick">
+            <!-- <img class=book-image :src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" :alt="book.name"> -->
+            <!-- placeholder image to be deleted --><img class=book-image src="../assets/a_game_of_thrones_cover.jpg" :alt="book.name"> 
         </li>
     </div>
 </template>
@@ -11,7 +12,12 @@ import { eventBus } from "@/main.js";
 
 export default {
     name: "books-list-item",
-    props: ['book']
+    props: ['book'],
+    methods: {
+        handleClick() {
+            eventBus.$emit("book-selected", this.book);
+        },
+    },
 }
 </script>
 

@@ -10,7 +10,7 @@
 import BooksListItem from "@/components/BooksListItem.vue";
 
 export default {
-    name: "all-books",
+    name: "books-list",
     components: {
         "books-list-item": BooksListItem
     },

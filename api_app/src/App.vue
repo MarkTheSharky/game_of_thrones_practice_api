@@ -2,11 +2,12 @@
   <main>
     <h1>Game Of Thrones</h1>
     <books-list :books="books"></books-list>
+    <book-detail v-if="selectedBook" :book="selectedBook"></book-detail>
   </main>
 </template>
 
 <script>
-// import { eventBus } from "@/main.js";
+import { eventBus } from "@/main.js";
 import BooksList from "@/components/BooksList.vue";
 import BookDetail from "@/components/BookDetail.vue";
 import Characterdetail from "@/components/CharacterDetail.vue";
@@ -16,11 +17,12 @@ export default {
   name: 'app',
   components: {
     "books-list": BooksList,
-    // "book-detail": BookDetail
+    "book-detail": BookDetail
   },
   data() {
     return {
       books: [],
+      selectedBook: null
     }
   },
   methods: {
@@ -31,7 +33,11 @@ export default {
     }
   },
   mounted() {
-    this.getGameOfThronesBooks()
+    this.getGameOfThronesBooks();
+
+    eventBus.$on("book-selected", (book) => {
+      this.selectedBook = book
+    })
   }
 }
 </script>
