@@ -2,7 +2,7 @@
     <div class="single-book">
         <li v-on:click="handleClick">
             <!-- <img class=book-image :src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" :alt="book.name"> -->
-            <!-- placeholder image to be deleted --><img class=book-image src="../assets/a_game_of_thrones_cover.jpg" :alt="book.name"> 
+            <img class=book-image src="../assets/a_game_of_thrones_cover.jpg" :alt="book.name"> <!-- placeholder image to be deleted -->
         </li>
     </div>
 </template>
@@ -16,6 +16,7 @@ export default {
     methods: {
         handleClick() {
             eventBus.$emit("book-selected", this.book);
+            eventBus.$emit("characterAPI-handler", this.book.povCharacters)
         },
     },
 }

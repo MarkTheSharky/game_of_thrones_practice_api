@@ -10,7 +10,7 @@
             <p>Released: {{book.released}}</p>
             <p>Publisher: {{book.publisher}}</p>
             <p>ISBN: {{book.isbn}}</p>
-            <character-select :characters="book.povCharacters"></character-select>
+            <character-select :povCharacters="povCharacters"></character-select>
         </div>
     </section>
 </template>
@@ -20,10 +20,10 @@ import CharacterSelect from "@/components/CharacterSelect.vue"
 
 export default {
     name: "book-detail",
-    props: ['book'],
+    props: ['book', "povCharacters"],
     components: {
         "character-select": CharacterSelect
-    }
+    },
 }
 </script>
 
