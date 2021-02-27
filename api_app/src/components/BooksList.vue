@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section id=list-of-books>
         <ul class="books-list">
             <books-list-item v-for="(book, index) in books" :key="index" :book="book"></books-list-item>
         </ul>
