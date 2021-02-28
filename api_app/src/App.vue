@@ -2,7 +2,7 @@
   <main>
     <h1>Game Of Thrones</h1>
     <books-list :books="books"></books-list>
-    <book-detail v-if="selectedBook" :book="selectedBook" :povCharacters="povCharacters"></book-detail>
+    <book-detail v-if="selectedBook" :book="selectedBook" :povCharacters="povCharacters" :selectedCharacter="selectedCharacter"></book-detail>
   </main>
 </template>
 
@@ -10,7 +10,6 @@
 import { eventBus } from "@/main.js";
 import BooksList from "@/components/BooksList.vue";
 import BookDetail from "@/components/BookDetail.vue";
-import Characterdetail from "@/components/CharacterDetail.vue";
 import MainCharacters from "@/components/MainCharacters.vue";
 
 export default {
@@ -23,7 +22,8 @@ export default {
     return {
       books: [],
       selectedBook: null,
-      povCharacters: []
+      povCharacters: [],
+      selectedCharacter: null
     }
   },
   methods: {
@@ -49,6 +49,9 @@ export default {
       characterAPIs.forEach((characterAPI) => {
         this.getGameOfThronesCharacter(characterAPI)
       })
+    })
+    eventBus.$on("character-selected", (character) => {
+      this.selectedCharacter = character
     })
   }
 }
